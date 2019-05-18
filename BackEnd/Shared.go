@@ -11,6 +11,15 @@ import (
 	"net/http"
 )
 
+// Send response to CORS OPTIONS pre-flight request
+func options(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+}
+
 // Send response back to client using HTTP
 func sendResponse(w http.ResponseWriter, httpMethod string, response interface{}) {
 	var httpStatus = http.StatusNotImplemented
