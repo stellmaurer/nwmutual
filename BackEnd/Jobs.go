@@ -16,18 +16,18 @@ func getJobs(w http.ResponseWriter, r *http.Request) {
 	resultsPerPage := r.FormValue("resultsPerPage")
 	city := r.FormValue("city")
 	state := r.FormValue("state")
-	page := r.FormValue("page")
-	textToSearchFor := r.FormValue("textToSearchFor")
-	sendResponse(w, "GET", getJobsHelper(resultsPerPage, city, state, page, textToSearchFor))
+	/*page := r.FormValue("page")
+	textToSearchFor := r.FormValue("textToSearchFor")*/
+	sendResponse(w, "GET", getJobsHelper(resultsPerPage, city, state))
 }
-func getJobsHelper(resultsPerPage string, city string, state string, page string, textToSearchFor string) interface{} {
+func getJobsHelper(resultsPerPage string, city string, state string) interface{} {
 
-	pageNumber, pageError := getPageNumber(page)
+	/*pageNumber, pageError := getPageNumber(page)
 	if pageError != nil {
 		return pageError
-	}
+	}*/
 
-	var request = createUSAJobsHTTPGetRequest(createQueryURL(resultsPerPage, city, state, page, textToSearchFor))
+	var request = createUSAJobsHTTPGetRequest(createQueryURL(resultsPerPage, city, state))
 	resp, getRequestError := sendUSAJobsHTTPGetRequest(request)
 	if getRequestError != nil {
 		return getRequestError
@@ -46,7 +46,7 @@ func getJobsHelper(resultsPerPage string, city string, state string, page string
 
 	// Format response
 	var successResponse = SuccessResponse{}
-	successResponse.Data = transformUSAJobAPIResultToOurOwnAPIResult(jobs, pageNumber)
+	successResponse.Data = transformUSAJobAPIResultToOurOwnAPIResult(jobs, 1)
 	return successResponse
 }
 
@@ -72,17 +72,11 @@ func createUSAJobsHTTPGetRequest(url string) *http.Request {
 	return req
 }
 
-func createQueryURL(resultsPerPage string, city string, state string, page string, textToSearchFor string) string {
+func createQueryURL(resultsPerPage string, city string, state string) string {
 	var url = "https://data.usajobs.gov/api/search?" +
 		"&LocationName=" + city + ",%20" + state +
 		"&ResultsPerPage=" + resultsPerPage +
 		"&SortField=PositionTitle"
-	if page != "" {
-		url += "&Page=" + page
-	}
-	if textToSearchFor != "" {
-		url += "&PositionTitle=" + textToSearchFor
-	}
 	return url
 }
 
