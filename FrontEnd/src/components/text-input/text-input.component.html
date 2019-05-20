@@ -1,1 +1,3 @@
-<input id="textInput" type="text" placeholder="Search jobs by title" [(ngModel)]="textToSearchFor" (ngModelChange)="emit()">
+<mat-form-field id="textInput">
+  <input matInput type="text" placeholder="Search jobs by title" [(ngModel)]="textToSearchFor" (ngModelChange)="emit()">
+</mat-form-field>

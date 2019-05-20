@@ -1,13 +1,17 @@
-<div *ngIf="pageData.length > 0">
+<div *ngIf="(dataLoading == false) && (pageData.length > 0)">
   <table id="table1">
     <tr *ngFor="let d of pageData">
       <td>{{ d }}</td>
     </tr>
   </table>
   <div id="paging">
-    <button [ngClass]="((i + 1) == page)?'pageNumberHighlighted':'pageNumber'" *ngFor="let p of pages; let i = index" (click)="goToPage(i + 1)">{{i + 1}}</button>
+    <button mat-button [ngClass]="((i + 1) == page)?'pageNumberHighlighted':'pageNumber'" *ngFor="let p of pages; let i = index" (click)="goToPage(i + 1)">{{i + 1}}</button>
   </div>
 </div>
-<div id="spacing" *ngIf="pageData.length == 0">
+<div id="noJobsFound" *ngIf="(dataLoading == false) && (pageData.length == 0)">
   <h4>No jobs found.</h4>
+</div>
+
+<div id="spinner" *ngIf="dataLoading == true">
+  <mat-spinner></mat-spinner>
 </div>

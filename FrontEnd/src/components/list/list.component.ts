@@ -20,10 +20,13 @@ export class ListComponent {
   public page : number;
   public pages : number[];
   public pageData : string[];
+  public dataLoading : boolean;
 
   constructor() {
     this.page = 1;
     this.pages = new Array<number>();
+    this.pageData = new Array<string>();
+    this.dataLoading = true;
   }
 
   ngOnChanges(){
@@ -31,6 +34,7 @@ export class ListComponent {
          this.pages = new Array<number>(Math.ceil(this.data.length / this.resultsPerPage));
          this.page = 1;
          this.updatePageData();
+         this.dataLoading = false;
     }
   }
 

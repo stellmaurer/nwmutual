@@ -4,7 +4,7 @@
   margin-right:5%;
 }
 
-#spacing {
+#noJobsFound {
   width: 90%;
   margin-left:5%;
   margin-right:5%;
@@ -14,6 +14,13 @@
 #paging {
   margin-top: 15px;
   text-align: center;
+}
+
+#spinner {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pageNumber {

@@ -1,11 +1,7 @@
 #textInput {
   width: 100%;
-  padding: 10px;
-  border-radius: 13px;
-  border: 1px solid black;
   box-sizing: border-box;
   width: 90%;
   margin-left:5%;
   margin-right:5%;
-  margin-bottom: 15px;
 }

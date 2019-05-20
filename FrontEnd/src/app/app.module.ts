@@ -9,6 +9,11 @@ import { ListComponent } from '../components/list/list.component';
 import { JobSearchComponent } from '../components/job-search/job-search.component';
 import { TextInputComponent } from '../components/text-input/text-input.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,12 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [Data],
   bootstrap: [AppComponent]
