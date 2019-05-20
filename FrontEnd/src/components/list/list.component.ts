@@ -13,9 +13,17 @@ import { Data } from '../../models/Data';
 })
 export class ListComponent {
 
-  title = 'the nw mutual app';
+  public resultsPerPage : number;
+  // input
+  public textToSearchFor : string;
 
-  constructor(private data : Data) {
-    data.getJobs(10, 0);
+  constructor(public data : Data) {
+    this.resultsPerPage = 50;
+    this.textToSearchFor = "";
+    data.getJobs(this.resultsPerPage, 1, this.textToSearchFor);
+  }
+
+  goToPage(page : number){
+    this.data.getJobs(this.resultsPerPage, page, this.textToSearchFor);
   }
 }

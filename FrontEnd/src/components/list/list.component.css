@@ -1,0 +1,35 @@
+#table1 {
+  width: 90%;
+  margin-left:5%;
+  margin-right:5%;
+}
+
+#paging {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.pageNumber {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+table {
+  border-radius: 13px;
+  border: 1px solid black;
+  border-spacing: 0;
+}
+
+th, td {
+  padding: 15px;
+  border-bottom: 1px solid black;
+}
+
+table tr:last-child td:first-child {
+    border-bottom: 0px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom: 0px;
+}
