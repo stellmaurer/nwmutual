@@ -17,16 +17,17 @@ func getJobs(w http.ResponseWriter, r *http.Request) {
 	city := r.FormValue("city")
 	state := r.FormValue("state")
 	page := r.FormValue("page")
-	sendResponse(w, "GET", getJobsHelper(resultsPerPage, city, state, page))
+	textToSearchFor := r.FormValue("textToSearchFor")
+	sendResponse(w, "GET", getJobsHelper(resultsPerPage, city, state, page, textToSearchFor))
 }
-func getJobsHelper(resultsPerPage string, city string, state string, page string) interface{} {
+func getJobsHelper(resultsPerPage string, city string, state string, page string, textToSearchFor string) interface{} {
 
 	pageNumber, pageError := getPageNumber(page)
 	if pageError != nil {
 		return pageError
 	}
 
-	var request = createUSAJobsHTTPGetRequest(createQueryURL(resultsPerPage, city, state, page))
+	var request = createUSAJobsHTTPGetRequest(createQueryURL(resultsPerPage, city, state, page, textToSearchFor))
 	resp, getRequestError := sendUSAJobsHTTPGetRequest(request)
 	if getRequestError != nil {
 		return getRequestError
@@ -71,10 +72,16 @@ func createUSAJobsHTTPGetRequest(url string) *http.Request {
 	return req
 }
 
-func createQueryURL(resultsPerPage string, city string, state string, page string) string {
-	var url = "https://data.usajobs.gov/api/search?LocationName=" + city + ",%20" + state + "&ResultsPerPage=" + resultsPerPage
+func createQueryURL(resultsPerPage string, city string, state string, page string, textToSearchFor string) string {
+	var url = "https://data.usajobs.gov/api/search?" +
+		"&LocationName=" + city + ",%20" + state +
+		"&ResultsPerPage=" + resultsPerPage +
+		"&SortField=PositionTitle"
 	if page != "" {
 		url += "&Page=" + page
+	}
+	if textToSearchFor != "" {
+		url += "&PositionTitle=" + textToSearchFor
 	}
 	return url
 }
