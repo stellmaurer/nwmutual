@@ -5,17 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Data } from '../models/Data';
-import { ListComponent } from '../components/list/list.component'
+import { ListComponent } from '../components/list/list.component';
+import { JobSearchComponent } from '../components/job-search/job-search.component';
+import { TextInputComponent } from '../components/text-input/text-input.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    JobSearchComponent,
+    TextInputComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [Data],
   bootstrap: [AppComponent]

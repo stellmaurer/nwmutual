@@ -1,10 +1,8 @@
-<div style="width:100%">
-  <table id="table1">
-    <tr *ngFor="let job of data.jobs">
-      <td>{{ job }}</td>
-    </tr>
-  </table>
-  <div id="paging">
-    <button class="pageNumber" *ngFor="let p of data.pages; let i = index" (click)="goToPage(i + 1)">{{i + 1}}</button>
-  </div>
+<table id="table1">
+  <tr *ngFor="let d of pageData">
+    <td>{{ d }}</td>
+  </tr>
+</table>
+<div id="paging">
+  <button [ngClass]="((i + 1) == page)?'pageNumberHighlighted':'pageNumber'" *ngFor="let p of pages; let i = index" (click)="goToPage(i + 1)">{{i + 1}}</button>
 </div>

@@ -15,6 +15,14 @@
   margin-right: 10px;
 }
 
+.pageNumberHighlighted {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #00a1df;
+  color: white;
+}
+
 table {
   border-radius: 13px;
   border: 1px solid black;
