@@ -4,6 +4,13 @@
   margin-right:5%;
 }
 
+#spacing {
+  width: 90%;
+  margin-left:5%;
+  margin-right:5%;
+  padding-left: 10px;
+}
+
 #paging {
   margin-top: 15px;
   text-align: center;

@@ -42,7 +42,7 @@ export class JobSearchComponent {
   filterJobs(){
     let a = new Array<string>();
     for(let i = 0; i < this.data.jobs.length; i++){
-      if(this.data.jobs[i].includes(this.textInput)){
+      if(this.data.jobs[i].toLowerCase().includes(this.textInput.toLowerCase())){
         a.push(this.data.jobs[i]);
       }
     }
