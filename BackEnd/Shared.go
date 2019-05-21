@@ -13,11 +13,11 @@ import (
 
 // Send response to CORS OPTIONS pre-flight request
 func options(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.WriteHeader(http.StatusOK)
 }
 
 // Send response back to client using HTTP
@@ -38,11 +38,11 @@ func sendResponse(w http.ResponseWriter, httpMethod string, response interface{}
 			httpStatus = http.StatusOK
 		}
 	}
-	w.WriteHeader(httpStatus)
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.WriteHeader(httpStatus)
 	json.NewEncoder(w).Encode(response)
 }
 
