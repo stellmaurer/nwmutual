@@ -9,25 +9,21 @@ package main
 import (
 	"encoding/json"
 	"net/http"
-	"strconv"
 )
 
 func getJobs(w http.ResponseWriter, r *http.Request) {
 	resultsPerPage := r.FormValue("resultsPerPage")
 	city := r.FormValue("city")
 	state := r.FormValue("state")
-	/*page := r.FormValue("page")
-	textToSearchFor := r.FormValue("textToSearchFor")*/
 	sendResponse(w, "GET", getJobsHelper(resultsPerPage, city, state))
 }
 func getJobsHelper(resultsPerPage string, city string, state string) interface{} {
 
-	/*pageNumber, pageError := getPageNumber(page)
-	if pageError != nil {
-		return pageError
-	}*/
+	request, urlError := createUSAJobsHTTPGetRequest(createQueryURL(resultsPerPage, city, state))
+	if urlError != nil {
+		return urlError
+	}
 
-	var request = createUSAJobsHTTPGetRequest(createQueryURL(resultsPerPage, city, state))
 	resp, getRequestError := sendUSAJobsHTTPGetRequest(request)
 	if getRequestError != nil {
 		return getRequestError
@@ -64,12 +60,19 @@ func sendUSAJobsHTTPGetRequest(request *http.Request) (*http.Response, *ErrorRes
 	return resp, nil
 }
 
-func createUSAJobsHTTPGetRequest(url string) *http.Request {
-	req, _ := http.NewRequest("GET", url, nil)
+func createUSAJobsHTTPGetRequest(url string) (*http.Request, *ErrorResponse) {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		var errorResponse = new(ErrorResponse)
+		var error = Error{}
+		error.Code = http.StatusBadRequest
+		error.Message = "Query parameters are invalid."
+		return nil, errorResponse
+	}
 	req.Header.Set("Authorization-Key", "Xv2Ytw9hK/5C6WitRWqUjje7n8/RDqZ8lOSElegLrEo=")
 	req.Header.Set("Host", "data.usajobs.gov")
 	req.Header.Set("User-Agent", "nhweller37@yahoo.com")
-	return req
+	return req, nil
 }
 
 func createQueryURL(resultsPerPage string, city string, state string) string {
@@ -78,22 +81,6 @@ func createQueryURL(resultsPerPage string, city string, state string) string {
 		"&ResultsPerPage=" + resultsPerPage +
 		"&SortField=PositionTitle"
 	return url
-}
-
-func getPageNumber(page string) (int, *ErrorResponse) {
-	var pageNumber int = 0
-	if page != "" {
-		var err error
-		pageNumber, err = strconv.Atoi(page)
-		if err != nil {
-			var errorResponse = new(ErrorResponse)
-			var error = Error{}
-			error.Code = http.StatusBadRequest
-			error.Message = "Page number is not a valid number."
-			return -1, errorResponse
-		}
-	}
-	return pageNumber, nil
 }
 
 func transformUSAJobAPIResultToOurOwnAPIResult(usaJobAPIResponse *USAJobResponse, pageNumber int) JobSearchResult {
