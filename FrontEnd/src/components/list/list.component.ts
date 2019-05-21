@@ -15,6 +15,7 @@ export class ListComponent {
   // Inputs
   @Input() data : string[];
   @Input() resultsPerPage : number;
+  @Input() error : boolean;
 
   // other member variables
   public page : number;
@@ -30,7 +31,7 @@ export class ListComponent {
   }
 
   ngOnChanges(){
-    if((this.data != undefined) && (this.resultsPerPage != undefined)){
+    if((this.data != undefined) && (this.resultsPerPage != undefined) && (this.error != undefined)){
          this.pages = new Array<number>(Math.ceil(this.data.length / this.resultsPerPage));
          this.page = 1;
          this.updatePageData();

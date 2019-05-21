@@ -4,7 +4,7 @@
   margin-right:5%;
 }
 
-#noJobsFound {
+.message {
   width: 90%;
   margin-left:5%;
   margin-right:5%;
@@ -44,8 +44,6 @@
 }
 
 table {
-  /*border-radius: 13px;
-  border: 1px solid #032A4A;*/
   border-spacing: 0;
 }
 

@@ -20,17 +20,20 @@ export class JobSearchComponent {
   public initialTitleToSearchBy : string;
   public textInput : string;
   public filteredJobs : string[];
+  public error : boolean;
 
   constructor(public data : Data) {
     this.resultsPerPage = 10;
     this.initialPageNumber = 1;
     this.initialTitleToSearchBy = "";
+    this.error = false;
     data.getJobs()
     .then((res) => {
         this.filteredJobs = data.jobs;
+        this.error = false;
     })
     .catch((err) => {
-        console.log(err);
+        this.error = true;
     });
   }
 
