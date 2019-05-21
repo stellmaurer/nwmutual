@@ -5,3 +5,18 @@
   margin-left:5%;
   margin-right:5%;
 }
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #032A4A !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #032A4A !important;;
+}
+
+::ng-deep .mat-input-element {
+    caret-color: #032A4A !important;
+    color: #032A4A !important;
+}
