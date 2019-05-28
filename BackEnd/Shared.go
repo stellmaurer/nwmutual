@@ -16,7 +16,7 @@ func options(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type, access-control-allow-origin")
 	w.WriteHeader(http.StatusOK)
 }
 
@@ -41,7 +41,7 @@ func sendResponse(w http.ResponseWriter, httpMethod string, response interface{}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type, access-control-allow-origin")
 	w.WriteHeader(httpStatus)
 	json.NewEncoder(w).Encode(response)
 }
