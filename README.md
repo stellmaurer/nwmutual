@@ -22,13 +22,10 @@ Make sure you have [npm](https://www.npmjs.com/get-npm) installed first. Open up
 Now open up a compatible web browser, type `http://localhost:4200/` into the address bar, and wait for the website to load.
 
 ## Project Summary
-
-The web application queries the BackEnd part of this project and receives any open government jobs in Milwaukee, Wisconsin.  It displays those open government jobs by title, and allows the user to search through those jobs.\
-\
 **(1) BackEnd**\
 This part consists of a web server; it is a RESTful API written in Go utilizing the HTTP protocol.\
 \
 The web server is public facing and its sole purpose is to return government job openings in Milwaukee, Wisconsin.  The web server calls another API (https://data.usajobs.gov : a public facing API which returns government job opportunities), filters that data, and returns job titles in Milwaukee, Wisconsin to whomever asks for them.\
 \
 **(2) FrontEnd**\
-This part consists of an Angular web application which is **compatible with Google Chrome, Firefox, Safari, Microsoft Edge, and Internet Explorer**.
+This part consists of an Angular web application which queries the BackEnd part of this project and receives any open government jobs in Milwaukee, Wisconsin. It displays those open government jobs by title, and allows the user to search through those jobs. This web application is **compatible with Google Chrome, Firefox, Safari, Microsoft Edge, and Internet Explorer**.
