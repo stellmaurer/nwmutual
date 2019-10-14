@@ -3,7 +3,7 @@
 NOTE: This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8 and [npm](https://www.npmjs.com/get-npm) version 6.9.0. Using other versions of those packages in this project may result in issues.
 
 ## Running the project
-Make sure you have [npm](https://www.npmjs.com/get-npm) installed first.
+Make sure you have [npm](https://www.npmjs.com/get-npm) installed first. Then navigate to the terminal.
 ```
   npm install -g @angular/cli@7.3.8
   cd <Path to nwmutual/FrontEnd>
