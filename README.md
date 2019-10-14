@@ -12,7 +12,7 @@ Open up a terminal.
 ```
 
 ## Running the FrontEnd
-Make sure you have [npm](https://www.npmjs.com/get-npm) installed first. Open up a terminal.
+Make sure you have [npm](https://www.npmjs.com/get-npm) installed first. Open up a new terminal window.
 ```
   npm install -g @angular/cli@7.3.8
   cd <Path to nwmutual/FrontEnd>
