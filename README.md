@@ -32,4 +32,3 @@ The web server is public facing and its sole purpose is to return government job
 \
 **(2) FrontEnd**\
 This part consists of an Angular web application which is **compatible with Google Chrome, Firefox, Safari, Microsoft Edge, and Internet Explorer**.\
-\
