@@ -31,4 +31,4 @@ This part consists of a web server; it is a RESTful API written in Go utilizing 
 The web server is public facing and its sole purpose is to return government job openings in Milwaukee, Wisconsin.  The web server calls another API (https://data.usajobs.gov : a public facing API which returns government job opportunities), filters that data, and returns job titles in Milwaukee, Wisconsin to whomever asks for them.\
 \
 **(2) FrontEnd**\
-This part consists of an Angular web application which is **compatible with Google Chrome, Firefox, Safari, Microsoft Edge, and Internet Explorer**.\
+This part consists of an Angular web application which is **compatible with Google Chrome, Firefox, Safari, Microsoft Edge, and Internet Explorer**.
